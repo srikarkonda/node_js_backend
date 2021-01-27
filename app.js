@@ -12,7 +12,7 @@ app.use("/",express.static(path.join(__dirname,"angular")))
 const mongoose  = require('mongoose');
 
 
-mongoose.connect("mongodb+srv://niharika:niharika@cluster0.kgqdx.mongodb.net/node-angular?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://srikar:9y1pOHz6ITQ0Nh3f@cluster0.nckq3.mongodb.net/cloudDB?retryWrites=true&w=majority",
 { useUnifiedTopology: true , useNewUrlParser: true, useCreateIndex: true  })
 .then(() => {
   console.log("connected to database");
@@ -35,17 +35,23 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/getPosts',(req,res,next) =>{
-  // const data=new Demo({
-  //   title:"test1",
-  //   content:"srikar"
-  // });
-Demo.find().then((data)=>{
-  console.log(data);
+  const data=new Demo({
+    title:"test1",
+    content:"srikar"
+  });
+  data.save();
   res.status(200).json({
     message: "Posts send succesfullyy",
     mangoData:data
   });
-})
+
+// Demo.find().then((data)=>{
+//   console.log(data);
+//   res.status(200).json({
+//     message: "Posts send succesfullyy",
+//     mangoData:data
+//   });
+// })
   
 });
 
